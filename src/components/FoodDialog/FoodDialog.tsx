@@ -3,11 +3,13 @@ import {DialogStyled, DialogShadowStyled, DialogBannerStyled, DialogBannerName} 
 import {ConfirmButtonStyled, FooterStyled, ContentStyled} from '../../Styles/Global.styled'
 
 import {IFood} from "../../Interfaces/food.module";
+import {formatPrice} from "../../Data/FoodData";
 
 const FoodDialog: React.FC<IFoodDialog> = ({openFood, setOpenFood, orders, setOrders}) => {
     if (!openFood) return null;
-    const order: { name: string } = {
-        name: openFood.name
+    const order: { name: string, price: number } = {
+        name: openFood.name,
+        price: openFood.price,
     }
 
     const addToOrder = () => {
@@ -25,7 +27,9 @@ const FoodDialog: React.FC<IFoodDialog> = ({openFood, setOpenFood, orders, setOr
 
                 </ContentStyled>
                 <FooterStyled>
-                    <ConfirmButtonStyled onClick={addToOrder}>Add to order</ConfirmButtonStyled>
+                    <ConfirmButtonStyled onClick={addToOrder}>
+                        Add to order: {formatPrice(openFood.price)}
+                    </ConfirmButtonStyled>
                 </FooterStyled>
             </DialogStyled>
         </>

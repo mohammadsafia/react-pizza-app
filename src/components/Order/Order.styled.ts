@@ -24,5 +24,8 @@ export const OrderContainer = styled.div`
 `
 
 export const OrderItem = styled.div`
-  padding: 10px 0
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 20px 150px 20px 60px;
+  justify-content: space-between;
 `

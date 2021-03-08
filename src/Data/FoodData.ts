@@ -1,45 +1,59 @@
 import {IFood} from "../Interfaces/food.module";
 
+export const formatPrice = (price: number) => {
+    return price.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    })
+}
 export const FoodItems: IFood [] = [
     {
         name: 'Cheese Pizza',
         img: '/images/pizza.jpg',
-        section: 'Pizza'
+        section: 'Pizza',
+        price: 200.20
     },
     {
         name: 'Chili Burger',
         img: '/images/burger-1.jpg',
-        section: 'Sandwich'
+        section: 'Sandwich',
+        price: 23.20
     },
     {
         name: 'Chili Wings',
         img: '/images/buf-wings.jpg',
-        section: 'Frieze'
+        section: 'Frieze',
+        price: 44.20
     },
     {
         name: 'Island Burger',
         img: '/images/burger-2.jpg',
-        section: 'Sandwich'
+        section: 'Sandwich',
+        price: 22.20
     },
     {
         name: 'Chicken Wings',
         img: '/images/chicken-wings.jpg',
-        section: 'Frieze'
+        section: 'Frieze',
+        price: 55.20
     },
     {
         name: 'Frieze',
         img: '/images/frize.jpg',
-        section: 'Frieze'
+        section: 'Frieze',
+        price: 43.20
     },
     {
         name: 'Frieze Chicken',
         img: '/images/frize-chicken.jpg',
-        section: 'Frieze'
+        section: 'Frieze',
+        price: 2.20
     },
     {
         name: 'Frieze Wings',
         img: '/images/frize-wings.jpg',
-        section: 'Frieze'
+        section: 'Frieze',
+        price: 12.20
     },
 ]
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {MenuStyled} from './Menu.styled'
-import {FoodList} from "../../Data/FoodData";
+import {FoodList, formatPrice} from "../../Data/FoodData";
 import {IFood} from "../../Interfaces/food.module";
 import {FoodGridStyled, FoodStyled, FoodLabelStyled} from './FoodGrid.styled';
 
@@ -17,7 +17,12 @@ const Menu: React.FC<IMenu> = (props) => {
                             <FoodStyled key={`${Math.random().toString() + food.name}`} img={food.img}
                                         onClick={props.setOpenFood.bind(null, food)}>
                                 <FoodLabelStyled>
-                                    {food.name}
+                                    <div>
+                                        {food.name}
+                                    </div>
+                                    <div>
+                                        {formatPrice(food.price)}
+                                    </div>
                                 </FoodLabelStyled>
                             </FoodStyled>
                         ))}
