@@ -1,5 +1,7 @@
 import React from 'react';
-import {DialogStyled, DialogShadowStyled, DialogBannerStyled, DialogBannerName} from './FoodDialog.styled'
+import {DialogStyled, DialogShadowStyled, DialogBannerStyled, DialogBannerName} from './FoodDialog.styled';
+import {ConfirmButtonStyled, FooterStyled, ContentStyled} from '../../Styles/Global.styled'
+
 import {IFood} from "../../Interfaces/food.module";
 
 const FoodDialog: React.FC<IFoodDialog> = (props) => {
@@ -12,7 +14,12 @@ const FoodDialog: React.FC<IFoodDialog> = (props) => {
                 <DialogBannerStyled img={props.openFood.img}>
                     <DialogBannerName>{props.openFood.name}</DialogBannerName>
                 </DialogBannerStyled>
+                <ContentStyled>
 
+                </ContentStyled>
+                <FooterStyled>
+                    <ConfirmButtonStyled>Add to order</ConfirmButtonStyled>
+                </FooterStyled>
             </DialogStyled>
         </>
     )
