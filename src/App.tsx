@@ -1,8 +1,8 @@
 import React from 'react';
 import {GlobalStyle} from './Styles/Global.styled'
-import Navbar from "./components/Shared/Navbar/Navbar";
-import Banner from './components/Shared/Banner/Banner'
-
+import Navbar from "./components/Navbar/Navbar";
+import Banner from './components/Banner/Banner'
+import Menu from './components/Menu/Menu'
 
 
 const App: React.FC = () => {
@@ -11,6 +11,7 @@ const App: React.FC = () => {
             <GlobalStyle/>
             <Navbar/>
             <Banner/>
+            <Menu/>
             <div>Hello world</div>
         </>
     );

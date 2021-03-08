@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {pizzaRed} from "../../../Styles/colors";
-import {Title} from "../../../Styles/Global.styled";
+import {pizzaRed} from "../../Styles/colors";
+import {Title} from "../../Styles/Global.styled";
 
 
 export const NavbarStyled = styled.div`
