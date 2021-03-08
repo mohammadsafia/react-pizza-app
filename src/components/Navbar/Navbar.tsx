@@ -5,7 +5,7 @@ const Navbar: React.FC = () => {
     return (
         <NavbarStyled>
             <Logo>
-                Sliceline 🍕
+                Sliceline <span>🍕</span>
             </Logo>
         </NavbarStyled>
     )
