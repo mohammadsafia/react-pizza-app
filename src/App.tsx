@@ -1,9 +1,11 @@
 import React from 'react';
 import {createGlobalStyle} from "styled-components"
+import {NavBar} from "./components/Shared/Navbar/Navbar";
 
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
   }
 
   h1, h2, h3 {
@@ -14,8 +16,8 @@ const GlobalStyle = createGlobalStyle`
 const App: React.FC = () => {
     return (
         <>
-            <h1>Hello</h1>
             <GlobalStyle/>
+            <NavBar/>
             <div>Hello world</div>
         </>
     );
