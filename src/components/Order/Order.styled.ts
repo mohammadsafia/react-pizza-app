@@ -17,3 +17,12 @@ export const OrderContent = styled(ContentStyled)`
   padding: 20px;
   height: 100%;
 `
+
+export const OrderContainer = styled.div`
+  padding: 10px 0;
+  border-bottom: 1px solid gray;
+`
+
+export const OrderItem = styled.div`
+  padding: 10px 0
+`

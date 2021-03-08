@@ -1,14 +1,28 @@
 import React from 'react';
-import {OrderStyled, OrderContent} from './Order.styled'
+import {OrderStyled, OrderContent, OrderContainer, OrderItem} from './Order.styled'
 import {ConfirmButtonStyled, FooterStyled} from '../../Styles/Global.styled';
 import {IFood} from "../../Interfaces/food.module";
 
 const Order: React.FC<IOrder> = ({orders, setOrders}) => {
     return (
         <OrderStyled>
-            <OrderContent>
-                {orders.length >= 1 ? `Found ${orders.length} orders` : `Your order's looking pretty empty.`}
-            </OrderContent>
+            {orders.length >= 1 ?
+                <OrderContent>
+                    <OrderContainer>
+                        {`Your Order:`}
+                    </OrderContainer>
+                    {orders.map(o => (
+                        <OrderContainer>
+                            <OrderItem>
+                                {o.name}
+                            </OrderItem>
+                        </OrderContainer>
+                    ))}
+                </OrderContent>
+                :
+                <OrderContent>
+                    Your order's looking pretty empty.
+                </OrderContent>}
             <FooterStyled>
                 <ConfirmButtonStyled>Checkout</ConfirmButtonStyled>
             </FooterStyled>
