@@ -1,23 +1,16 @@
 import React from 'react';
-import {createGlobalStyle} from "styled-components"
-import {NavBar} from "./components/Shared/Navbar/Navbar";
+import {GlobalStyle} from './Styles/Global.styled'
+import Navbar from "./components/Shared/Navbar/Navbar";
+import Banner from './components/Shared/Banner/Banner'
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-  }
 
-  h1, h2, h3 {
-    font-family: 'Righteous', cursive;
-  }
-`
 
 const App: React.FC = () => {
     return (
         <>
             <GlobalStyle/>
-            <NavBar/>
+            <Navbar/>
+            <Banner/>
             <div>Hello world</div>
         </>
     );

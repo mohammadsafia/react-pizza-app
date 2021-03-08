@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import {pizzaRed} from "../../../Styles/colors";
-import {Title} from "../../../Styles/title";
+import {Title} from "../../../Styles/Global.styled";
 
 
 export const NavbarStyled = styled.div`
   background-color: ${pizzaRed};
   padding: 10px;
+  position: fixed;
+  width: 100%;
 `
 
 export const Logo = styled(Title)`

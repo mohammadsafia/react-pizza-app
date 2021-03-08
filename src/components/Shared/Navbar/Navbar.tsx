@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavbarStyled, Logo} from './Navbar.styled'
 
-export const NavBar: React.FC = () => {
+const Navbar: React.FC = () => {
     return (
         <NavbarStyled>
             <Logo>
@@ -10,4 +10,6 @@ export const NavBar: React.FC = () => {
         </NavbarStyled>
     )
 }
+
+export default Navbar
 
