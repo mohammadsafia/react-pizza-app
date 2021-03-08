@@ -8,17 +8,20 @@ const Menu: React.FC = () => {
     return (
         <MenuStyled>
             <h1>Menu</h1>
-            <FoodGridStyled>
-                {FoodList.map((food: IFood) => (
-                    <FoodStyled img={food.img}>
-                        <FoodLabelStyled>
-                            {food.name}
-                        </FoodLabelStyled>
-
-                    </FoodStyled>
-                ))}
-            </FoodGridStyled>
-
+            {Object.entries(FoodList).map(([sectionName, foods]: [string, IFood[]], index:number) => (
+                <span key={index}>
+                    <h1>{sectionName}</h1>
+                    <FoodGridStyled>
+                        {foods.map((food: IFood) => (
+                            <FoodStyled img={food.img}>
+                                <FoodLabelStyled>
+                                    {food.name}
+                                </FoodLabelStyled>
+                            </FoodStyled>
+                        ))}
+                    </FoodGridStyled>
+                </span>
+            ))}
         </MenuStyled>
     )
 }

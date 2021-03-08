@@ -3,7 +3,7 @@ import {Title} from '../../Styles/Global.styled';
 
 export const FoodGridStyled = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 `
 
