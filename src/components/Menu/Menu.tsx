@@ -15,7 +15,7 @@ const Menu: React.FC<IMenu> = (props) => {
                     <FoodGridStyled>
                         {foods.map((food: IFood) => (
                             <FoodStyled key={`${Math.random().toString() + food.name}`} img={food.img}
-                                        onClick={props.onSetOpenFood.bind(null, food)}>
+                                        onClick={props.setOpenFood.bind(null, food)}>
                                 <FoodLabelStyled>
                                     {food.name}
                                 </FoodLabelStyled>
@@ -29,7 +29,8 @@ const Menu: React.FC<IMenu> = (props) => {
 };
 
 interface IMenu {
-    onSetOpenFood: (food: IFood) => void
+    setOpenFood: Function;
+    openFood: IFood | null | undefined;
 }
 
 export default Menu;

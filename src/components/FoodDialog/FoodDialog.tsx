@@ -4,21 +4,28 @@ import {ConfirmButtonStyled, FooterStyled, ContentStyled} from '../../Styles/Glo
 
 import {IFood} from "../../Interfaces/food.module";
 
-const FoodDialog: React.FC<IFoodDialog> = (props) => {
-    if (!props.openFood) return null;
+const FoodDialog: React.FC<IFoodDialog> = ({openFood, setOpenFood, orders, setOrders}) => {
+    if (!openFood) return null;
+    const order: { name: string } = {
+        name: openFood.name
+    }
 
+    const addToOrder = () => {
+        setOrders([...orders, order]);
+        setOpenFood(null)
+    }
     return (
         <>
-            <DialogShadowStyled onClick={props.onCloseModal}/>
+            <DialogShadowStyled onClick={setOpenFood.bind(null, null)}/>
             <DialogStyled>
-                <DialogBannerStyled img={props.openFood.img}>
-                    <DialogBannerName>{props.openFood.name}</DialogBannerName>
+                <DialogBannerStyled img={openFood.img}>
+                    <DialogBannerName>{openFood.name}</DialogBannerName>
                 </DialogBannerStyled>
                 <ContentStyled>
 
                 </ContentStyled>
                 <FooterStyled>
-                    <ConfirmButtonStyled>Add to order</ConfirmButtonStyled>
+                    <ConfirmButtonStyled onClick={addToOrder}>Add to order</ConfirmButtonStyled>
                 </FooterStyled>
             </DialogStyled>
         </>
@@ -26,8 +33,10 @@ const FoodDialog: React.FC<IFoodDialog> = (props) => {
 }
 
 interface IFoodDialog {
-    openFood: IFood | null;
-    onCloseModal: () => void
+    openFood: IFood | null | undefined;
+    setOpenFood: Function;
+    orders: IFood[];
+    setOrders: Function
 }
 
 export default FoodDialog
