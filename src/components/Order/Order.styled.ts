@@ -12,6 +12,11 @@ export const OrderStyled = styled.div`
   box-shadow: 4px 0 5px 4px gray;
   display: flex;
   flex-direction: column;
+  
+  @media(max-width: 400px){ 
+    position: relative; 
+    width: 100%; 
+  }
 `
 export const OrderContent = styled(ContentStyled)`
   padding: 20px;

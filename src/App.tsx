@@ -7,11 +7,12 @@ import FoodDialog from './components/FoodDialog/FoodDialog'
 import Order from "./components/Order/Order";
 import {useOpenFood} from "./Hooks/useOpenFood";
 import {useOrders} from "./Hooks/useOrders";
+import {useTitle} from "./Hooks/useTitle";
 
 const App: React.FC = () => {
     const openFood = useOpenFood();
     const orders = useOrders()
-
+    useTitle({...openFood,...orders})
     return (
         <>
             <GlobalStyle/>
