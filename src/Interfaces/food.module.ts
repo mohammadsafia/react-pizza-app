@@ -4,5 +4,6 @@ export interface IFood {
     name: string;
     img: string;
     section: FoodType,
-    price: number
+    price: number,
+    quantity?: 1
 }

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import {FoodLabelStyled} from "../Menu/FoodGrid.styled";
+import {Title} from '../../Styles/Global.styled';
+import {pizzaRed} from '../../Styles/colors'
 
 export const DialogStyled = styled.div`
   width: 500px;
@@ -12,10 +14,10 @@ export const DialogStyled = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media(max-width: 400px){ 
-    width: 100%; 
-    left: 0px; 
-    z-index: 12; 
+  @media (max-width: 400px) {
+    width: 100%;
+    left: 0px;
+    z-index: 12;
   }
 `
 
@@ -43,4 +45,35 @@ export const DialogBannerName = styled(FoodLabelStyled)`
   font-size: 30px;
   padding: 5px;
 `
+export const QuantityInputStyled = styled.input`
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+  border: none;
+  outline: none;
+`
 
+export const IncrementContainer = styled(Title)`
+  display: flex;
+  height: 24px;
+`
+
+export const IncrementButton = styled.div`
+  width: 23px;
+  color: ${pizzaRed};
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  line-height: 23px;
+  margin: 0 10px;
+  border: 1px solid ${pizzaRed};
+  ${({disabled}: { disabled: boolean }) => disabled && `
+    opacity: 0.3;
+    pointer-events: none
+  `};
+
+  &:hover {
+    background-color: #ffe3e3;
+  }
+
+`

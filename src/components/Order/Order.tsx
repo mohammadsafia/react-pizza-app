@@ -2,7 +2,7 @@ import React from 'react';
 import {OrderStyled, OrderContent, OrderContainer, OrderItem} from './Order.styled'
 import {ConfirmButtonStyled, FooterStyled} from '../../Styles/Global.styled';
 import {IFood} from "../../Interfaces/food.module";
-import {formatPrice} from "../../Data/FoodData";
+import {formatPrice, getPrice} from "../../Data/FoodData";
 
 const Order: React.FC<IOrder> = ({orders, setOrders}) => {
     return (
@@ -12,12 +12,12 @@ const Order: React.FC<IOrder> = ({orders, setOrders}) => {
                     <OrderContainer>
                         {`Your Order:`}
                     </OrderContainer>
-                    {orders.map((o:IFood) => (
+                    {orders.map((o: IFood) => (
                         <OrderContainer>
                             <OrderItem>
-                                <div>1</div>
+                                <div>{o.quantity}</div>
                                 <div> {o.name}</div>
-                                <div>{formatPrice(o.price)}</div>
+                                <div>{formatPrice(getPrice(o))}</div>
                             </OrderItem>
                         </OrderContainer>
                     ))}
@@ -37,6 +37,5 @@ interface IOrder {
     orders: IFood[];
     setOrders: Function
 }
-
 
 export default Order

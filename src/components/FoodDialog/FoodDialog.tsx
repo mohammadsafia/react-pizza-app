@@ -1,18 +1,22 @@
 import React from 'react';
 import {DialogStyled, DialogShadowStyled, DialogBannerStyled, DialogBannerName} from './FoodDialog.styled';
 import {ConfirmButtonStyled, FooterStyled, ContentStyled} from '../../Styles/Global.styled'
-
+import {QuantityInput} from './QuantityInput';
+import {useQuantity} from '../../Hooks/useQuantity'
 import {IFood} from "../../Interfaces/food.module";
-import {formatPrice} from "../../Data/FoodData";
+import {formatPrice, getPrice} from "../../Data/FoodData";
 
-const FoodDialog: React.FC<IFoodDialog> = ({openFood, setOpenFood, orders, setOrders}) => {
+const FoodDialogContainer: React.FC<IFoodDialog> = ({openFood, setOpenFood, orders, setOrders}) => {
+    const quantity = useQuantity(openFood!.quantity)
     if (!openFood) return null;
-    const order: { name: string, price: number } = {
+
+    const order: IOrder = {
         name: openFood.name,
         price: openFood.price,
+        quantity: quantity.value,
     }
 
-    const addToOrder = () => {
+    const addToOrder = (): void => {
         setOrders([...orders, order]);
         setOpenFood(null)
     }
@@ -24,16 +28,21 @@ const FoodDialog: React.FC<IFoodDialog> = ({openFood, setOpenFood, orders, setOr
                     <DialogBannerName>{openFood.name}</DialogBannerName>
                 </DialogBannerStyled>
                 <ContentStyled>
-
+                    <QuantityInput quantity={quantity}/>
                 </ContentStyled>
                 <FooterStyled>
                     <ConfirmButtonStyled onClick={addToOrder}>
-                        Add to order: {formatPrice(openFood.price)}
+                        Add to order: {formatPrice(getPrice(order))}
                     </ConfirmButtonStyled>
                 </FooterStyled>
             </DialogStyled>
         </>
     )
+}
+
+export const FoodDialog: React.FC<IFoodDialog> = (props) => {
+    if (!props.openFood) return null;
+    return <FoodDialogContainer {...props}/>
 }
 
 interface IFoodDialog {
@@ -43,4 +52,4 @@ interface IFoodDialog {
     setOrders: Function
 }
 
-export default FoodDialog
+type IOrder = { name: string, price: number, quantity: number }

@@ -6,6 +6,10 @@ export const formatPrice = (price: number) => {
         currency: 'USD'
     })
 }
+
+export const getPrice = (order: IOrder | IFood): number => {
+    return (order?.quantity || 1) * order.price || 1
+}
 export const FoodItems: IFood [] = [
     {
         name: 'Cheese Pizza',
@@ -64,3 +68,5 @@ export const FoodList: { [key: string]: IFood[] } = FoodItems.reduce((res: any, 
     res[food.section].push(food);
     return res
 }, {})
+
+export type IOrder = { name: string, price: number, quantity: number }
