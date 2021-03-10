@@ -5,9 +5,14 @@ import {QuantityInputStyled, IncrementContainer, IncrementButton} from './FoodDi
 export const QuantityInput: React.FC<IQuantityInput> = ({quantity}) => {
     return <IncrementContainer>
         <div>Quantity:</div>
-        <IncrementButton onClick={()=>{quantity.setValue(+quantity.value  - 1)}} disabled={quantity.value === 1}> -</IncrementButton>
+        <IncrementButton onClick={() => {
+            quantity.setValue(+quantity.value - 1)
+        }} disabled={quantity.value === 1}> -</IncrementButton>
         <QuantityInputStyled {...quantity}/>
-        <IncrementButton onClick={()=>{quantity.setValue(+quantity.value  + 1)}} disabled={false}> +</IncrementButton>
+
+        <IncrementButton onClick={() => {
+            quantity.setValue(+quantity.value + 1)
+        }} disabled={false}> +</IncrementButton>
     </IncrementContainer>
 }
 

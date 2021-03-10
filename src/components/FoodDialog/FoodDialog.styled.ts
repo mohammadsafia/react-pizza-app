@@ -75,5 +75,18 @@ export const IncrementButton = styled.div`
   &:hover {
     background-color: #ffe3e3;
   }
+`
 
+export const ToppingGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`
+
+export const ToppingCheckbox = styled.input`
+  margin-right: 10px;
+  cursor: pointer;
+`
+
+export const ToppingLabel = styled.label`
+  cursor: pointer;
 `

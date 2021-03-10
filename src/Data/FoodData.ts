@@ -1,4 +1,5 @@
 import {IFood} from "../Interfaces/food.module";
+import {IDefaultTopping} from "../Hooks/useToppings";
 
 export const formatPrice = (price: number) => {
     return price.toLocaleString('en-US', {
@@ -7,9 +8,13 @@ export const formatPrice = (price: number) => {
     })
 }
 
+export const randomIdGenerator = (suffix: string = 'item', length: number = 1e9) => `${suffix}-${Math.floor(Math.random() * length).toString(16)}`;
+
+const pricePerTopping = 0.5;
 export const getPrice = (order: IOrder | IFood): number => {
-    return (order?.quantity || 1) * order.price || 1
+    return (order?.quantity || 1) * (order.price || 1 + [...order?.toppings || []].filter(t => t.checked).length * pricePerTopping)
 }
+
 export const FoodItems: IFood [] = [
     {
         name: 'Cheese Pizza',
@@ -59,7 +64,7 @@ export const FoodItems: IFood [] = [
         section: 'Frieze',
         price: 12.20
     },
-]
+];
 
 export const FoodList: { [key: string]: IFood[] } = FoodItems.reduce((res: any, food: any) => {
     if (!res[food.section]) {
@@ -69,4 +74,5 @@ export const FoodList: { [key: string]: IFood[] } = FoodItems.reduce((res: any, 
     return res
 }, {})
 
-export type IOrder = { name: string, price: number, quantity: number }
+
+export type IOrder = { name: string, price: number, quantity: number, toppings: IDefaultTopping[] }

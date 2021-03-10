@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
       border-radius: 20px;
     }
   }
+
   h1, h2, h3 {
     font-family: 'Righteous', cursive;
   }
@@ -49,7 +50,7 @@ export const ConfirmButtonStyled = styled(Title)`
 export const ContentStyled = styled.div`
   overflow: auto;
   min-height: 100px;
-  padding: 0 40px
+  padding: 0 40px 80px 40px;
 `
 export const FooterStyled = styled.div`
   box-shadow: 0 -2px 10px 0 gray;

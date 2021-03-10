@@ -3,23 +3,31 @@ import {DialogStyled, DialogShadowStyled, DialogBannerStyled, DialogBannerName} 
 import {ConfirmButtonStyled, FooterStyled, ContentStyled} from '../../Styles/Global.styled'
 import {QuantityInput} from './QuantityInput';
 import {useQuantity} from '../../Hooks/useQuantity'
-import {IFood} from "../../Interfaces/food.module";
-import {formatPrice, getPrice} from "../../Data/FoodData";
-
+import { IFood} from "../../Interfaces/food.module";
+import {formatPrice, getPrice, IOrder} from "../../Data/FoodData";
+import {Toppings} from './Topping'
+import { useToppings} from '../../Hooks/useToppings';
 const FoodDialogContainer: React.FC<IFoodDialog> = ({openFood, setOpenFood, orders, setOrders}) => {
-    const quantity = useQuantity(openFood!.quantity)
+    const quantity = useQuantity(openFood!.quantity);
+    const toppings = useToppings(openFood?.toppings)
     if (!openFood) return null;
 
     const order: IOrder = {
         name: openFood.name,
         price: openFood.price,
         quantity: quantity.value,
+        toppings: toppings.toppings
     }
 
     const addToOrder = (): void => {
         setOrders([...orders, order]);
         setOpenFood(null)
     }
+
+    const hasTopping = (openFood: IFood | null | undefined): boolean => {
+        return openFood?.section === 'Pizza'
+    }
+
     return (
         <>
             <DialogShadowStyled onClick={setOpenFood.bind(null, null)}/>
@@ -29,6 +37,11 @@ const FoodDialogContainer: React.FC<IFoodDialog> = ({openFood, setOpenFood, orde
                 </DialogBannerStyled>
                 <ContentStyled>
                     <QuantityInput quantity={quantity}/>
+                    {hasTopping(openFood) && <>
+                        <h3>Would you like toppings?</h3>
+                        <Toppings {...toppings}/>
+                    </>}
+
                 </ContentStyled>
                 <FooterStyled>
                     <ConfirmButtonStyled onClick={addToOrder}>
@@ -51,5 +64,3 @@ interface IFoodDialog {
     orders: IFood[];
     setOrders: Function
 }
-
-type IOrder = { name: string, price: number, quantity: number }
