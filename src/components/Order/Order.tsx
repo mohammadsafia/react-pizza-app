@@ -53,7 +53,7 @@ const Order: React.FC<IOrder> = ({orders, setOrders}) => {
             </FooterStyled>
         </OrderStyled>
     )
-}
+};
 
 interface IOrder {
     orders: IFood[];
