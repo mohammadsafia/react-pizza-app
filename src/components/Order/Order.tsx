@@ -10,6 +10,12 @@ const Order: React.FC<IOrder> = ({orders, setOrders}) => {
     }, 0)
     const tax: number = subTotal * 0.16;
     const total: number = subTotal + tax;
+
+    const deleteOrder = (index: number) => {
+        const newOrders = orders.slice();
+        newOrders.splice(index, 1);
+        setOrders(newOrders)
+    }
     return (
         <OrderStyled>
             {orders.length >= 1 ?
@@ -17,11 +23,12 @@ const Order: React.FC<IOrder> = ({orders, setOrders}) => {
                     <OrderContainer>
                         {`Your Order:`}
                     </OrderContainer>
-                    {orders.map((o: IFood) => (
+                    {orders.map((o: IFood, index: number) => (
                         <OrderContainer>
                             <OrderItem>
                                 <div>{o.quantity}</div>
                                 <div> {o.name}</div>
+                                <div style={{cursor: 'pointer'}} onClick={() => deleteOrder(index)}>delete</div>
                                 <div>{formatPrice(getPrice(o))}</div>
                             </OrderItem>
                             <DetailsItem>
@@ -56,7 +63,7 @@ const Order: React.FC<IOrder> = ({orders, setOrders}) => {
             </FooterStyled>
         </OrderStyled>
     )
-};
+}
 
 interface IOrder {
     orders: IFood[];

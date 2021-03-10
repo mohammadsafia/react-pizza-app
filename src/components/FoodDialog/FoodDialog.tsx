@@ -2,21 +2,23 @@ import React from 'react';
 import {DialogStyled, DialogShadowStyled, DialogBannerStyled, DialogBannerName} from './FoodDialog.styled';
 import {ConfirmButtonStyled, FooterStyled, ContentStyled} from '../../Styles/Global.styled'
 import {QuantityInput} from './QuantityInput';
-import {useQuantity} from '../../Hooks/useQuantity'
+import {useQuantity,useChoice, useToppings} from '../../Hooks'
 import { IFood} from "../../Interfaces/food.module";
 import {formatPrice, getPrice, IOrder} from "../../Data/FoodData";
 import {Toppings} from './Topping'
-import { useToppings} from '../../Hooks/useToppings';
+
 const FoodDialogContainer: React.FC<IFoodDialog> = ({openFood, setOpenFood, orders, setOrders}) => {
     const quantity = useQuantity(openFood!.quantity);
-    const toppings = useToppings(openFood?.toppings)
+    const toppings = useToppings(openFood?.toppings);
+    // const choiceRadio = useChoice(openFood?.choice || '')
     if (!openFood) return null;
 
     const order: IOrder = {
         name: openFood.name,
         price: openFood.price,
         quantity: quantity.value,
-        toppings: toppings.toppings
+        toppings: toppings.toppings,
+        // choice: choiceRadio.value
     }
 
     const addToOrder = (): void => {

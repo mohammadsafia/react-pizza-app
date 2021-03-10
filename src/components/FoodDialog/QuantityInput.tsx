@@ -1,5 +1,5 @@
 import React from 'react';
-import {IUseQuantity} from '../../Hooks/useQuantity'
+import {IUseQuantity} from '../../Hooks'
 import {QuantityInputStyled, IncrementContainer, IncrementButton} from './FoodDialog.styled'
 
 export const QuantityInput: React.FC<IQuantityInput> = ({quantity}) => {

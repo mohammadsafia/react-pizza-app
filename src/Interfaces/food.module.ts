@@ -1,6 +1,6 @@
-import {IDefaultTopping} from "../Hooks/useToppings";
+import {IDefaultTopping} from "../Hooks";
 
-export type FoodType = 'Pizza' | 'Sandwich' | 'Frieze'
+export type FoodType = 'Pizza' | 'Sandwich' | 'Frieze' | 'Drinks'
 
 export interface IFood {
     name: string;
@@ -8,5 +8,6 @@ export interface IFood {
     section: FoodType,
     price: number,
     quantity?: 1,
-    toppings?: IDefaultTopping[]
+    toppings?: IDefaultTopping[],
+    choices?: string[]
 }

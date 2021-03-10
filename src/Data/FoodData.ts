@@ -62,8 +62,15 @@ export const FoodItems: IFood [] = [
         name: 'Frieze Wings',
         img: '/images/frize-wings.jpg',
         section: 'Frieze',
-        price: 12.20
+        price: 12.20,
     },
+    {
+        name: 'Soda',
+        img: '/images/soda.jpg',
+        section: 'Drinks',
+        price: 1,
+        choices: ['Coke', 'Sprite']
+    }
 ];
 
 export const FoodList: { [key: string]: IFood[] } = FoodItems.reduce((res: any, food: any) => {
