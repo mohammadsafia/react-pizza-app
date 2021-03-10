@@ -5,6 +5,11 @@ import {IFood} from "../../Interfaces/food.module";
 import {formatPrice, getPrice} from "../../Data/FoodData";
 
 const Order: React.FC<IOrder> = ({orders, setOrders}) => {
+    const subTotal = orders.reduce((total: number, order: IFood) => {
+        return total + getPrice(order)
+    }, 0)
+    const tax:number = subTotal * 0.16;
+    const total:number = subTotal + tax;
     return (
         <OrderStyled>
             {orders.length >= 1 ?
@@ -21,6 +26,23 @@ const Order: React.FC<IOrder> = ({orders, setOrders}) => {
                             </OrderItem>
                         </OrderContainer>
                     ))}
+                    <OrderContainer>
+                        <OrderItem>
+                            <div/>
+                            <div>Sub-Total</div>
+                            <div>{formatPrice(subTotal)}</div>
+                        </OrderItem>
+                        <OrderItem>
+                            <div/>
+                            <div>Tax</div>
+                            <div>{formatPrice(tax)}</div>
+                        </OrderItem>
+                        <OrderItem>
+                            <div/>
+                            <div>Total</div>
+                            <div>{formatPrice(total)}</div>
+                        </OrderItem>
+                    </OrderContainer>
                 </OrderContent>
                 :
                 <OrderContent>
